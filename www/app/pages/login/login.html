@@ -1,0 +1,19 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Bienvenue
+  </ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Quel est ton nom ?
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input fixed-label>
+        <input #username type="text">
+      </ion-input>
+      <button outline (click)="login(username.value)">Valider</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
