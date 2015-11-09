@@ -1,16 +1,19 @@
 <ion-navbar *navbar>
   <ion-title>
-    Home
+    Where are we gonna eat ?
   </ion-title>
 </ion-navbar>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      Card Header
+      Proposer un resto
     </ion-card-header>
     <ion-card-content>
-      Hello World
+      <ion-input fixed-label>
+        <input #resto type="text">
+      </ion-input>
+      <button outline (click)="addResto(resto.value)">Ajouter</button>
     </ion-card-content>
   </ion-card>
 </ion-content>

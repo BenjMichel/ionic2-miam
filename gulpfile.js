@@ -6,6 +6,7 @@
 
 // node module imports
 var gulp = require('gulp'),
+    concat = require('gulp-concat'),
     webpack = require('webpack'),
     minimist = require('minimist'),
     sass = require('gulp-sass'),
@@ -92,6 +93,12 @@ gulp.task('sass', function(){
     .pipe(reload({ stream: true }));
 });
 
+
+gulp.task('vendors', function(){
+  return gulp.src('www/vendors/**.js')
+    .pipe(concat('vendors.js'))
+    .pipe(gulp.dest('www/build/js/'))
+});
 
 /******************************************************************************
  * fonts
