@@ -5,7 +5,13 @@ import {ParseService} from '../../services/parseService'
   templateUrl: 'app/pages/home/home.html',
 })
 export class HomePage {
-  constructor() {}
+  constructor() {
+    let that = this;
+    this.restos = null;
+    ParseService.getRestos().then(function(restos) {
+      that.restos = restos;
+    });
+  }
 
   addResto(resto) {
     ParseService.addResto(resto);

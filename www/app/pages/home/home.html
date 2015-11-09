@@ -5,6 +5,11 @@
 </ion-navbar>
 
 <ion-content>
+  <ion-card *ng-for="#resto of restos">
+    <ion-card-header>
+      {{resto.get('name')}}
+    </ion-card-header>
+  </ion-card>
   <ion-card>
     <ion-card-header>
       Proposer un resto

@@ -3,3 +3,4 @@ www/build/
 platforms/
 plugins/
 .DS_Store
+www/app/services/parseConfig.js
