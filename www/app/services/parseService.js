@@ -1,4 +1,5 @@
 import {appId, jsKey} from './parseConfig.js';
+import {LoginService} from './loginService';
 
 export class ParseService {
   static init() {
@@ -20,7 +21,8 @@ export class ParseService {
           let restos = []
           for (restoObject of results) {
             restos.push({
-              name: restoObject.get('name')
+              name: restoObject.get('name'),
+              id: restoObject.id,
             });
           }
           resolve(restos);
@@ -30,5 +32,18 @@ export class ParseService {
         }
       });
     })
+  }
+
+  static saveRating(restoId, value) {
+    var Rating = Parse.Object.extend('Rating');
+    var Resto = Parse.Object.extend('Resto');
+    var rating = new Rating();
+    var relation = rating.relation("restoId");
+    relation.add(Resto.createWithoutData(restoId));
+    return rating.save({
+      value: value,
+      date: new Date(),
+      username: LoginService.getUsername(),
+    });
   }
 }

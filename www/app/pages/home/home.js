@@ -22,4 +22,9 @@ export class HomePage {
       this.fetchRestos();
     );
   }
+
+  rate(resto) {
+    resto.isActive = true;
+    ParseService.saveRating(resto.id, 1);
+  }
 }

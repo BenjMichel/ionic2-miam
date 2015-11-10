@@ -8,6 +8,11 @@
   <ion-card *ng-for="#resto of restos">
     <ion-card-header>
       {{resto.name}}
+      <icon
+        heart
+        is-active={{resto.isActive}}
+        (click)="rate(resto)"
+      ></icon>
     </ion-card-header>
   </ion-card>
   <ion-card>
