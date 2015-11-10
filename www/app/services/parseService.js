@@ -17,7 +17,13 @@ export class ParseService {
       var query = new Parse.Query(Resto);
       query.find({
         success: function(results) {
-          resolve(results);
+          let restos = []
+          for (restoObject of results) {
+            restos.push({
+              name: restoObject.get('name')
+            });
+          }
+          resolve(restos);
         },
         error: function(error) {
           reject(error);

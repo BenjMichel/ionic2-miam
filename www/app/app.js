@@ -17,7 +17,6 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      console.log('Platform ready');
       StatusBar.setStyle(StatusBar.DEFAULT);
       ParseService.init();
     });
