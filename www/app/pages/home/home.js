@@ -6,14 +6,20 @@ import {ParseService} from '../../services/parseService'
 })
 export class HomePage {
   constructor() {
+    this.restos = [];
+    this.fetchRestos();
+  }
+
+  fetchRestos() {
     let that = this;
-    this.restos = null;
     ParseService.getRestos().then(function(restos) {
       that.restos = restos;
     });
   }
 
   addResto(resto) {
-    ParseService.addResto(resto);
+    ParseService.addResto(resto).then(() =>
+      this.fetchRestos();
+    );
   }
 }

@@ -8,7 +8,7 @@ export class ParseService {
   static addResto(name) {
     var Resto = Parse.Object.extend('Resto');
     var resto = new Resto();
-    resto.save({name: name});
+    return resto.save({name: name});
   }
 
   static getRestos() {
