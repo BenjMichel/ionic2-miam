@@ -7,12 +7,13 @@
 <ion-content>
   <ion-card *ng-for="#resto of restos">
     <ion-card-header>
-      {{resto.name}} - {{resto.count}}
+      {{resto.name}}
       <icon
         heart
         is-active={{resto.isActive}}
         (click)="rate(resto)"
       ></icon>
+      {{resto.count}} Votes
     </ion-card-header>
   </ion-card>
   <ion-card>
