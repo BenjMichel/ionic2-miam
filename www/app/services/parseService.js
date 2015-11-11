@@ -29,6 +29,7 @@ export class ParseService {
               }
               if (ratings[restoObject.id]) {
                 resto.count = ratings[restoObject.id].count;
+                resto.hasUserRated = ratings[restoObject.id].hasUserRated;
               }
               restos.push(resto);
             }
@@ -52,12 +53,19 @@ export class ParseService {
       query.find({
         success: function(results) {
           let ratings = {};
+          let username = LoginService.getUsername();
           for (ratingObject of results) {
             let id = ratingObject.get('restoId').id;
             if (!ratings[id]) {
-              ratings[id] = { count: 0};
+              ratings[id] = {
+                count: 0,
+                hasUserRated: false,
+              };
             }
             ratings[id].count += 1;
+            if (ratingObject.get('username') === username) {
+              ratings[id].hasUserRated = true;
+            }
           }
           resolve(ratings);
         },

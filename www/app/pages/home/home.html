@@ -10,7 +10,7 @@
       {{resto.name}}
       <icon
         heart
-        is-active={{resto.isActive}}
+        is-active={{resto.hasUserRated}}
         (click)="rate(resto)"
       ></icon>
       {{resto.count}} Votes

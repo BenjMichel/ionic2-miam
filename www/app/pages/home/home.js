@@ -29,7 +29,7 @@ export class HomePage {
 
   rate(resto) {
     ParseService.saveRating(resto.id, 1);
-    resto.isActive = true;
+    resto.hasUserRated = true;
     resto.count += 1;
     this.restos = this.restos.sort(this.compareRestosRating);
   }
