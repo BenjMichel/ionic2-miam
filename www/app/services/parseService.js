@@ -13,19 +13,53 @@ export class ParseService {
   }
 
   static getRestos() {
+    let that = this;
     return new Promise(function(resolve, reject) {
-      var Resto = Parse.Object.extend('Resto');
-      var query = new Parse.Query(Resto);
+      that.getNumberOfRatingsByResto().then(function(ratings) {
+        var Resto = Parse.Object.extend('Resto');
+        var query = new Parse.Query(Resto);
+        query.find({
+          success: function(results) {
+            let restos = []
+            for (restoObject of results) {
+              let resto = {
+                name: restoObject.get('name'),
+                id: restoObject.id,
+                count: 0,
+              }
+              if (ratings[restoObject.id]) {
+                resto.count = ratings[restoObject.id].count;
+              }
+              restos.push(resto);
+            }
+            resolve(restos);
+          },
+          error: function(error) {
+            reject(error);
+          }
+        });
+      }).catch(function(error) {
+        reject(error);
+      });
+    })
+  }
+
+  static getNumberOfRatingsByResto() {
+    return new Promise(function(resolve, reject) {
+      var Rating = Parse.Object.extend('Rating');
+      var query = new Parse.Query(Rating);
+      query.greaterThan('date', moment().startOf('day').toDate());
       query.find({
         success: function(results) {
-          let restos = []
-          for (restoObject of results) {
-            restos.push({
-              name: restoObject.get('name'),
-              id: restoObject.id,
-            });
+          let ratings = {};
+          for (ratingObject of results) {
+            let id = ratingObject.get('restoId').id;
+            if (!ratings[id]) {
+              ratings[id] = { count: 0};
+            }
+            ratings[id].count += 1;
           }
-          resolve(restos);
+          resolve(ratings);
         },
         error: function(error) {
           reject(error);
@@ -38,10 +72,9 @@ export class ParseService {
     var Rating = Parse.Object.extend('Rating');
     var Resto = Parse.Object.extend('Resto');
     var rating = new Rating();
-    var relation = rating.relation("restoId");
-    relation.add(Resto.createWithoutData(restoId));
     return rating.save({
       value: value,
+      restoId: Resto.createWithoutData(restoId),
       date: new Date(),
       username: LoginService.getUsername(),
     });

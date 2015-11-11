@@ -25,6 +25,7 @@ export class HomePage {
 
   rate(resto) {
     resto.isActive = true;
+    resto.count += 1;
     ParseService.saveRating(resto.id, 1);
   }
 }

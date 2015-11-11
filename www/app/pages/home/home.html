@@ -7,7 +7,7 @@
 <ion-content>
   <ion-card *ng-for="#resto of restos">
     <ion-card-header>
-      {{resto.name}}
+      {{resto.name}} - {{resto.count}}
       <icon
         heart
         is-active={{resto.isActive}}
