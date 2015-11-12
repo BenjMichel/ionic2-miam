@@ -30,3 +30,15 @@
   font-size: 12px;
   color: color(secondary);
 }
+
+.user-rating {
+  flex-direction: 'column';
+  justify-content: 'flex-end';
+  margin-top: 5px!important;
+}
+
+.user-rating--text {
+  font-size: 10px;
+  color: color(secondary);
+  text-align: right;
+}

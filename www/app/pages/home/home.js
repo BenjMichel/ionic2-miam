@@ -8,7 +8,8 @@ import {ParseService} from '../../services/parseService'
 export class HomePage {
   constructor() {
     this.restos = [];
-    this.fetchRestosInContinuous();
+    this.fetchRestos();
+    // this.fetchRestosInContinuous();
   }
 
   fetchRestosInContinuous() {
@@ -51,5 +52,9 @@ export class HomePage {
     resto.hasUserRated = true;
     resto.count += 1;
     this.restos = this.restos.sort(this.compareRestosRating);
+  }
+
+  toggleRating(resto) {
+    resto.showUsersWhoRated = !resto.showUsersWhoRated;
   }
 }

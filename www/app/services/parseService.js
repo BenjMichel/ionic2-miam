@@ -31,6 +31,7 @@ export class ParseService {
               if (ratings[restoObject.id]) {
                 resto.count = ratings[restoObject.id].count;
                 resto.hasUserRated = ratings[restoObject.id].hasUserRated;
+                resto.usersWhoRatedIt = ratings[restoObject.id].usersWhoRatedIt;
               }
               restos.push(resto);
             }
@@ -61,9 +62,11 @@ export class ParseService {
               ratings[id] = {
                 count: 0,
                 hasUserRated: false,
+                usersWhoRatedIt: []
               };
             }
             ratings[id].count += 1;
+            ratings[id].usersWhoRatedIt.push(ratingObject.get('username'));
             if (ratingObject.get('username') === username) {
               ratings[id].hasUserRated = true;
             }

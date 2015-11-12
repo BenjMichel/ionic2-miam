@@ -13,6 +13,7 @@
         - {{resto.realName}}
       </span>
     </ion-card-header>
+
     <ion-card-content>
       <div class="block-like">
         <span *ng-if="!resto.hasUserRated">
@@ -23,13 +24,18 @@
             (click)="rate(resto)"
           ></icon>
         </span>
+
         <span *ng-if="resto.hasUserRated">
           <icon
             ion-ios-heart
             class="block-like__icon--active"
           ></icon>
         </span>
-        <span class="block-like__text">
+
+        <span
+          class="block-like__text"
+          (click)="toggleRating(resto)"
+        >
           {{resto.count}}
           <span *ng-if="resto.count > 1">
             votes
@@ -38,6 +44,13 @@
             vote
           </span>
         </span>
+      </div>
+
+      <div *ng-if="resto.showUsersWhoRated">
+        <ion-list no-lines class="user-rating">
+          <p *ng-for="#user of resto.usersWhoRatedIt" class="user-rating--text">
+            {{user}}
+          </p>
       </div>
     </ion-card-content>
   </ion-card>
