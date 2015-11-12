@@ -1,5 +1,6 @@
 <ion-navbar *navbar>
   <ion-title>
+    <icon pizza></icon>
     Lieux proposés
   </ion-title>
 </ion-navbar>
@@ -21,7 +22,7 @@
         </span>
         <span *ng-if="resto.hasUserRated">
           <icon
-            heart
+            ion-ios-heart
             class="block-like__icon--active"
           ></icon>
         </span>
