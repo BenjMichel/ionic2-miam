@@ -11,6 +11,6 @@ export class LoginPage {
 
   login(username) {
     window.localStorage['username'] = username;
-    this.nav.push(HomePage);
+    this.nav.setRoot(HomePage);
   }
 }

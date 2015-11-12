@@ -23,7 +23,7 @@ export class ParseService {
             let restos = []
             for (restoObject of results) {
               let resto = {
-                name: restoObject.get('name'),
+                name: restoObject.get('commonName'),
                 id: restoObject.id,
                 count: 0,
               }

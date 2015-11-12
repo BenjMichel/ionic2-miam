@@ -1,0 +1,27 @@
+.toolbar-title {
+  color: color(primary);
+}
+
+.toolbar .toolbar-background {
+  background-color: color(secondary);
+}
+
+.block-like {
+  display: block;
+  text-align: right;
+}
+
+.block-like__icon {
+  padding-right: 5px;
+  color: color(secondary);
+}
+
+.block-like__icon--active {
+  color: color(primary);
+}
+
+.block-like__text {
+  font-size: 15px;
+  font-weight: bold;
+  color: color(primary);
+}

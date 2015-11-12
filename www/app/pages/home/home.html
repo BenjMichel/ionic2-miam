@@ -1,20 +1,41 @@
 <ion-navbar *navbar>
   <ion-title>
-    Where are we gonna eat ?
+    Lieux proposés
   </ion-title>
 </ion-navbar>
 
 <ion-content>
   <ion-card *ng-for="#resto of restos">
     <ion-card-header>
-      {{resto.name}}
-      <icon
-        heart
-        is-active={{resto.hasUserRated}}
-        (click)="rate(resto)"
-      ></icon>
-      {{resto.count}} Votes
+      "{{resto.name}}"
     </ion-card-header>
+    <ion-card-content>
+      <div class="block-like">
+        <span *ng-if="!resto.hasUserRated">
+          <icon
+            ion-ios-heart-outline
+            class="block-like__icon"
+            is-active={{resto.hasUserRated}}
+            (click)="rate(resto)"
+          ></icon>
+        </span>
+        <span *ng-if="resto.hasUserRated">
+          <icon
+            heart
+            class="block-like__icon--active"
+          ></icon>
+        </span>
+        <span class="block-like__text">
+          {{resto.count}}
+          <span *ng-if="resto.count > 1">
+            votes
+          </span>
+          <span *ng-if="resto.count <= 1">
+            vote
+          </span>
+        </span>
+      </div>
+    </ion-card-content>
   </ion-card>
   <ion-card>
     <ion-card-header>
