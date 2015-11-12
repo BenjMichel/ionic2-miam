@@ -9,6 +9,9 @@
   <ion-card *ng-for="#resto of restos">
     <ion-card-header>
       "{{resto.name}}"
+      <span *ng-if=resto.realName class="name__real-name">
+        - {{resto.realName}}
+      </span>
     </ion-card-header>
     <ion-card-content>
       <div class="block-like">
@@ -38,7 +41,7 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
       Proposer un resto
     </ion-card-header>
@@ -48,5 +51,5 @@
       </ion-input>
       <button outline (click)="addResto(resto.value)">Ajouter</button>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>

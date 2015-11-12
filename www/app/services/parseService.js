@@ -24,6 +24,7 @@ export class ParseService {
             for (restoObject of results) {
               let resto = {
                 name: restoObject.get('commonName'),
+                realName: restoObject.get('realName'),
                 id: restoObject.id,
                 count: 0,
               }
