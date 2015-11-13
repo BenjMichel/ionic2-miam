@@ -28,7 +28,7 @@ export class HomePage {
     if (a.count != b.count){
       return b.count - a.count;
     }
-    return b.name > a.name;
+    return b.name.toLowerCase() < a.name.toLowerCase();
   }
 
   fetchRestos() {
