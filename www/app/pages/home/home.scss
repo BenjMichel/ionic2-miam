@@ -23,8 +23,8 @@
 
 @keyframes to-active {
     0%   {font-size: inherit;color: color(secondary);}
-    25%  {font-size: 21px;}
-    50%  {font-size: 16px;}
+    25%  {font-size: 24px;color: color(danger);}
+    50%  {font-size: 14px;}
     75%  {font-size: 20px;}
     100% {font-size: inherit;color: color(primary);}
 }
