@@ -1,10 +1,9 @@
 <ion-navbar *navbar>
   <ion-title>
-    <icon ion-ios-restaurant></icon>
     Lieux proposés
     <icon
       class="navbar-right-icon"
-      refresh
+      refresh-circle
       (click)="fetchRestos()"
     >
     </icon>
@@ -49,10 +48,16 @@
           <span *ng-if="resto.count <= 1">
             vote
           </span>
+          <span *ng-if="resto.showUsersWhoRated">
+            <icon ion-ios-arrow-up></icon>
+          </span>
+          <span *ng-if="!resto.showUsersWhoRated">
+            <icon ion-ios-arrow-down></icon>
+          </span>
         </span>
       </div>
 
-      <div *ng-if="resto.showUsersWhoRated">
+      <div *ng-if="resto.showUsersWhoRated && resto.usersWhoRatedIt">
         <ion-list no-lines class="user-rating">
           <p *ng-for="#user of resto.usersWhoRatedIt" class="user-rating--text">
             {{user}}
